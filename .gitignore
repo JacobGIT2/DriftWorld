@@ -22,5 +22,8 @@ wandb/
 *.mp4
 *.gif
 
-# log
+# Log
 *.log
+
+# Plan
+PLAN.md
