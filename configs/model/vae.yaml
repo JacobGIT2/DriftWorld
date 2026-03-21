@@ -1,0 +1,6 @@
+# VAE world model overrides
+model:
+  type: vae
+
+training:
+  batch_size: 64

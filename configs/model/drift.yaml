@@ -1,0 +1,9 @@
+# Drifting world model overrides
+model:
+  type: drift
+
+dataset:
+  load_dinov2_features: true
+
+training:
+  batch_size: 32

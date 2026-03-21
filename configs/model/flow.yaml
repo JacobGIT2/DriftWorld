@@ -1,0 +1,6 @@
+# Flow Matching world model overrides
+model:
+  type: flow
+
+training:
+  batch_size: 64

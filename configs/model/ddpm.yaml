@@ -1,0 +1,6 @@
+# DDPM world model overrides
+model:
+  type: ddpm
+
+training:
+  batch_size: 64

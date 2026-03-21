@@ -1,0 +1,23 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Data and outputs
+data/
+outputs/
+wandb/
+
+# Precomputed files
+*_latent.pt
+*_dinov2.pt
+
+# Media
+*.mp4
+*.gif

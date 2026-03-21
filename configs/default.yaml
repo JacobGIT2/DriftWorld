@@ -1,0 +1,67 @@
+model:
+  type: flow  # flow | ddpm | vae | drift
+
+  backbone:
+    hidden_dim: 384
+    num_heads: 6
+    num_layers: 12
+    patch_size: 2
+    mlp_ratio: 4.0
+    action_dim: 22  # 7 (rel_actions) + 15 (robot_obs)
+    robot_obs_dim: 15
+
+  # Model-specific configs
+  ddpm:
+    num_train_steps: 1000
+    beta_schedule: linear
+    prediction_type: epsilon
+    num_inference_steps: 50
+
+  flow:
+    sigma_min: 1.0e-4
+    num_inference_steps: 50
+
+  vae:
+    latent_dim: 256
+    kl_weight: 1.0e-4
+
+  drift:
+    tau: 0.1
+    num_particles: 1
+    dinov2_model: dinov2_vits14
+    precomputed_dinov2: true
+
+dataset:
+  name: calvin
+  data_dir: data/calvin/task_D_D
+  split: training
+  val_split: validation
+  action_key: rel_actions
+  robot_obs_key: robot_obs
+  robot_obs_dim: 15
+  image_size: 256
+  load_dinov2_features: false
+
+training:
+  batch_size: 64
+  lr: 1.0e-4
+  weight_decay: 0.01
+  warmup_steps: 1000
+  total_steps: 200000
+  fp16: true
+  num_workers: 4
+  log_every: 100
+  eval_every: 5000
+  save_every: 10000
+  vis_every: 5000
+  gradient_clip: 1.0
+  robot_obs_weight: 1.0
+  seed: 42
+
+eval:
+  num_samples: 1000
+  rollout_horizon: 20
+  num_inference_steps: 50
+  compute_fid: false
+
+output_dir: outputs/${model.type}_${dataset.name}
