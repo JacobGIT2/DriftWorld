@@ -21,3 +21,6 @@ wandb/
 # Media
 *.mp4
 *.gif
+
+# log
+*.log
