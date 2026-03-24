@@ -24,11 +24,16 @@ dependencies = [
     "imageio-ffmpeg>=0.4.9",
     "safetensors>=0.4.0",
     "accelerate>=0.25.0",
+    "pybullet>=3.2.0",
+    "calvin-env @ file:///tmp/calvin_repo/calvin_env",
 ]
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[tool.hatch.metadata]
+allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/driftworld"]
