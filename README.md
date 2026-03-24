@@ -98,6 +98,8 @@ Single-step reconstruction quality vs denoising steps (DDPM model). Fixed a crit
 - [x] Goal extraction from CALVIN task annotations
 
 ### In Progress
+- [ ] Investigate DDPM autoregressive rollout instability (diverges on validation data even at 50 steps)
+- [ ] Fix Drifting Model mode collapse (residual architecture, batch-level drifting field, kernel temperature tuning)
 - [ ] PPO policy training on Flow(5) world model (task: `push_blue_block_left`)
 - [ ] Policy evaluation in CALVIN simulator with video recording
 
