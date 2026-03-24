@@ -46,10 +46,14 @@ class DDPMWorldModel(nn.Module):
             prediction_type=prediction_type,
         )
         # Fast inference scheduler
+        # clip_sample=False is critical: SD-VAE latents range [-3.5, 3.2],
+        # not [-1, 1]. Default clip_sample=True destroys latent values at
+        # each denoising step, causing quality to degrade with more steps.
         self.inference_scheduler = DDIMScheduler(
             num_train_timesteps=num_train_steps,
             beta_schedule=beta_schedule,
             prediction_type=prediction_type,
+            clip_sample=False,
         )
 
     def forward(
